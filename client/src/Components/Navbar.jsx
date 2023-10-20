@@ -1,7 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import LoginButton from './AuthLogin';
+import Profile from './AuthProfile';
+import LogoutButton from './AuthLogout';
+import { useAuth0 } from '@auth0/auth0-react';
+import DropdownButton from './Dropdown';
 
 function Header() {
+  const { isLoading, error} = useAuth0()
+
   return (
     <>
       <nav className="bg-white border-gray-200 dark:bg-gray-900">
@@ -11,8 +18,20 @@ function Header() {
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">EA League</span>
           </Link>
           <div className="flex items-center">
+            {/* <DropdownButton /> */}
             {/* <a href="tel:5541251234" className="mr-6 text-sm  text-gray-500 dark:text-white hover:underline">(555) 412-1234</a> */}
-            <Link to='/login' className="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Login</Link>
+            {/* <Link to='/login' className="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Login</Link> */}
+            <div>
+              {error && <p>Authentication Error</p>}
+              {!error && isLoading && <p>Loading...</p>}
+              {!error && !isLoading && (
+                <>
+                  <LoginButton />
+                  <Profile />
+                  <LogoutButton />
+                </>
+              )}
+            </div>
           </div>
         </div>
       </nav>

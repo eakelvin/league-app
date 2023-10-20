@@ -8,6 +8,9 @@ import SignIn from './Pages/LoginPage'
 import CreateAccount from './Pages/SignupPage'
 import ContactSection from './Pages/Contact'
 import AboutSection from './Pages/About'
+import axios from 'axios'
+
+axios.defaults.baseURL = 'http://localhost:3000'
 
 function App() {
 
