@@ -7,7 +7,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import DropdownButton from './Dropdown';
 
 function Header() {
-  const { isLoading, error} = useAuth0()
+  const { isLoading, error, isAuthenticated} = useAuth0()
 
   return (
     <>
@@ -21,14 +21,13 @@ function Header() {
             {/* <DropdownButton /> */}
             {/* <a href="tel:5541251234" className="mr-6 text-sm  text-gray-500 dark:text-white hover:underline">(555) 412-1234</a> */}
             {/* <Link to='/login' className="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Login</Link> */}
-            <div>
+            <div className='flex justify-end items-center'>
               {error && <p>Authentication Error</p>}
               {!error && isLoading && <p>Loading...</p>}
               {!error && !isLoading && (
                 <>
-                  <LoginButton />
-                  <Profile />
-                  <LogoutButton />
+                  <span className='pr-5'><Profile /></span>
+                  {isAuthenticated ? <LogoutButton /> : <LoginButton /> }
                 </>
               )}
             </div>
