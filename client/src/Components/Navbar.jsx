@@ -22,6 +22,18 @@ function Header() {
             {/* <a href="tel:5541251234" className="mr-6 text-sm  text-gray-500 dark:text-white hover:underline">(555) 412-1234</a> */}
             {/* <Link to='/login' className="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Login</Link> */}
             <div className='flex justify-end items-center'>
+            {/* {error && <p>Authentication Error</p>}
+              {isLoading && !error && <p>Loading...</p>}
+              {isAuthenticated && !isLoading && (
+                <>
+                  <span className='pr-5'><Profile /></span>
+                  <LogoutButton />
+                </>
+              )}
+              {!isAuthenticated && !isLoading && (
+                <LoginButton />
+              )} */}
+
               {error && <p>Authentication Error</p>}
               {!error && isLoading && <p>Loading...</p>}
               {!error && !isLoading && (
@@ -43,12 +55,6 @@ function Header() {
               </li> */}
               {/* <li>
                 <a href="#" className="text-gray-900 dark:text-white hover:underline">Company</a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-900 dark:text-white hover:underline">Team</a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-900 dark:text-white hover:underline">Features</a>
               </li> */}
             </ul>
           </div>
