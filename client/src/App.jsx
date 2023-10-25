@@ -19,9 +19,6 @@ function App() {
       <Router>
         <Routes>
           <Route exact path='/' element={<Home />} />
-          {/* <Route exact path='/dashboard' element={<Dashboard />} /> */}
-          {/* <Route path='/login' element={<SignIn />} /> */}
-          {/* <Route path='/signup' element={<CreateAccount />} /> */}
           <Route path='/contact' element={<ContactSection />} />
           <Route path='/about' element={<AboutSection />} />
           <Route path='*' element={<ErrorPage />} />
