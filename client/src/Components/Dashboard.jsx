@@ -4,7 +4,9 @@ import Header from './Navbar'
 const Dashboard = () => {
   return (
     <div>
-      <h1>Welcome to the party</h1>
+      <form action="">
+        <input type="text" />
+      </form>
     </div>
   )
 }
