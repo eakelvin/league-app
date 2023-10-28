@@ -9,7 +9,7 @@ function AboutSection() {
     <section className="bg-white dark:bg-gray-900">
       <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
         <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
-          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">EA didn't reinvent the wheel</h2>
+          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">EA League is for creating and managing sports leagues and tournaments</h2>
           <p className="mb-4">
             <a className='font-bold text-blue-600 visited:text-purple-600' href="https://ea-linktree.netlify.app/">Check me out!</a>
           </p>
