@@ -9,6 +9,12 @@ import AboutSection from './Pages/About'
 import axios from 'axios'
 import Dashboard from './Components/Dashboard'
 import ErrorPage from './Pages/ErrorPage'
+import NewLeague from './Pages/NewLeague'
+import Results from './Pages/Results'
+import Scores from './Pages/Scores'
+import Stats from './Pages/Stats'
+import Goal from './Pages/Goal'
+import Assists from './Pages/Assists'
 
 // axios.defaults.baseURL = 'http://localhost:3000'
 
@@ -21,10 +27,15 @@ function App() {
           <Route exact path='/' element={<Home />} />
           <Route path='/contact' element={<ContactSection />} />
           <Route path='/about' element={<AboutSection />} />
+          <Route path='/newleague' element={<NewLeague />} />
+          <Route path='/results' element={<Results />} />
+          <Route path='/scores' element={<Scores />} />
+          <Route path='/stats' element={<Stats />} />
+          <Route path='/goals' element={<Goal />} />
+          <Route path='/assists' element={<Assists />} />
           <Route path='*' element={<ErrorPage />} />
         </Routes>
       </Router>
-    
     </>
   )
 }
