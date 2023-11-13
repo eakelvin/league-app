@@ -1,8 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios'
 
-
-const ProductTable = () => {
+const LeagueTable = () => {
     const [currentDateTime, setCurrentDateTime] = useState('');
+    const [league, setLeague] = useState([])
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/league')
+    .then(response => {
+      setLeague(response.data)
+    })
+    .catch(error => {
+      console.error('Error fetching stats:', error)
+    })
+  }, [])
+  
 
   useEffect(() => {
     const getCurrentDateTime = () => {
@@ -58,7 +70,17 @@ const ProductTable = () => {
           </tr>
         </thead>
         <tbody>
-          <tr className="bg-blue-600 border-b border-blue-400">
+        {league.map((item) => (
+            <tr key={item._id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              <td className="px-6 py-4">{item.team}</td>
+              <td className="px-6 py-4">{item.games}</td>
+              <td className="px-6 py-4">{item.win} : {item.draw} : {item.loss}</td>
+              <td className="px-6 py-4">{item.plus}</td>
+              <td className="px-6 py-4">{item.minus}</td>
+              <td className="px-6 py-4">{item.points}</td>
+            </tr>
+        ))}
+          {/* <tr className="bg-blue-600 border-b border-blue-400">
             <th scope="row" className="font-medium bg-blue-500 text-blue-50 whitespace-nowrap dark:text-blue-100">
               Apple MacBook Pro 17"
             </th>
@@ -80,88 +102,15 @@ const ProductTable = () => {
             <td className="py-4">
               $2999
             </td>
-          </tr>
-          <tr className="bg-blue-600 border-b border-blue-400">
-            <th scope="row" className="py-4 font-medium bg-blue-500 text-blue-50 whitespace-nowrap dark:text-blue-100">
-              Microsoft Surface Pro
-            </th>
-            <td className="py-4">
-              White
-            </td>
-            <td className="py-4 bg-blue-500">
-              Laptop PC
-            </td>
-            <td className="py-4">
-              $1999
-            </td>
-            <td className="py-4 bg-blue-500">
-              <a href="#" className="font-medium text-white hover:underline">Edit</a>
-            </td>
-            <td className="py-4">
-              $1999
-            </td>
-            <td className="py-4 bg-blue-500">
-              <a href="#" className="font-medium text-white hover:underline">Edit</a>
-            </td>
-          </tr>
-          <tr className="bg-blue-600 border-b border-blue-400">
-            <th scope="row" className="font-medium bg-blue-500 text-blue-50 whitespace-nowrap dark:text-blue-100">
-              Magic Mouse 2
-            </th>
-            <td className="py-4">
-              Black
-            </td>
-            <td className="py-4 bg-blue-500">
-              Accessories
-            </td>
-            <td className="py-4">
-              $99
-            </td>
-            <td className="py-4 bg-blue-500">
-              <a href="#" className="font-medium text-white hover:underline">Edit</a>
-            </td>
-          </tr>
-          <tr className="bg-blue-600 border-b border-blue-400">
-            <th scope="row" className="py-4 font-medium bg-blue-500 text-blue-50 whitespace-nowrap dark:text-blue-100">
-              Google Pixel Phone
-            </th>
-            <td className="py-4">
-              Gray
-            </td>
-            <td className="py-4 bg-blue-500">
-              Phone
-            </td>
-            <td className="py-4">
-              $799
-            </td>
-            <td className="py-4 bg-blue-500">
-              <a href="#" className="font-medium text-white hover:underline">Edit</a>
-            </td>
-          </tr>
-          <tr className="bg-blue-600 border-blue-40">
-            <th scope="row" className="py-4 font-medium bg-blue-500 text-blue-50 whitespace-nowrap dark:text-blue-100">
-              Apple Watch 5
-            </th>
-            <td className="py-4">
-              Red
-            </td>
-            <td className="py-4 bg-blue-500">
-              Wearables
-            </td>
-            <td className="py-4">
-              $999
-            </td>
-            <td className="py-4 bg-blue-500">
-              <a href="#" className="font-medium text-white hover:underline">Edit</a>
-            </td>
-          </tr>
+          </tr> */}
+
         </tbody>
       </table>
     </div>
   );
 };
 
-export default ProductTable;
+export default LeagueTable;
 
 // import React from 'react';
 

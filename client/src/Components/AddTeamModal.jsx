@@ -1,8 +1,43 @@
 import React, { useState } from 'react';
 import { AiOutlinePlus } from "react-icons/ai";
+import axios from 'axios'
 
-const CrudModal = () => {
+const CrudModal = ({setSubmittedData}) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const [data, setData] = useState({
+    team: ''
+  })
+
+  function handleChange(event) {
+    const {name, value} = event.target
+    setData(prevState => {
+        return {
+            ...prevState,
+            [name] : value
+        }
+    })
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    axios.post('http://localhost:3000/league', data)
+    .then(response => {
+      if (response.status = 201) {
+        console.log('Team Added:', response.data);
+        setSubmittedData(response.data.team)
+      } else {
+        console.error('Failed to create stat. Status:', response.status)
+      }
+    })
+    .catch(error => {
+      console.error('Error creating team:', error)
+    })
+    console.log(data);
+    setData({
+      team: ''
+    })
+  }
 
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
@@ -56,7 +91,7 @@ const CrudModal = () => {
                 </button>
               </div>
               {/* Modal body */}
-              <form action="#" className="p-4 md:p-5">
+              <form onSubmit={handleSubmit} action="#" className="p-4 md:p-5">
               <div className="grid gap-4 mb-4 grid-cols-2">
                 <div className="col-span-2">
                     <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -64,8 +99,9 @@ const CrudModal = () => {
                     </label>
                     <input
                         type="text"
-                        name="name"
-                        id="name"
+                        name="team"
+                        value={data.team}
+                        onChange={handleChange}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         placeholder="Enter team name"
                         required
@@ -84,7 +120,7 @@ const CrudModal = () => {
                     data-modal-hide="popup-modal"
                     type="button"
                     className="text-white bg-slate-700 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
-                    onClick={toggleModal}
+                    onClick={handleSubmit}
                 >
                     Confirm
                 </button>

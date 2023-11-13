@@ -1,22 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { AiOutlinePlus } from "react-icons/ai";
 import Header from '../Components/Navbar'
 import Footer from '../Components/Footer'
-import ProductTable from '../Components/Table';
-import CrudModal from '../Components/ModalForm';
+import CrudModal from '../Components/AddTeamModal';
 import { Link } from 'react-router-dom';
+import LeagueTable from '../Components/LeagueTable';
+
 
 const NewLeague = () => {
+  const [submittedData, setSubmittedData] = useState('');
+
   return (
     <div>
       <Header />
       <div className='p-5'>
         <div className='mb-10'>
-            <ProductTable />
+            <LeagueTable />
         </div>
 
         <div className=''>
-        <CrudModal />
+        <CrudModal setSubmittedData={setSubmittedData} />
         
         <Link to='/results'>
         <button
@@ -46,6 +49,17 @@ const NewLeague = () => {
         </Link>
 
         </div>
+
+        {submittedData && (
+              <div className="mt-4 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
+                <h4 className="text-lg font-semibold mb-2">
+                  Submitted Data
+                </h4>
+                <pre className="whitespace-pre-wrap">
+                  {submittedData}
+                </pre>
+              </div>
+        )}
         
 
        </div>
