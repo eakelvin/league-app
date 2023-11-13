@@ -51,14 +51,14 @@ const NewLeague = () => {
         </div>
 
         {submittedData && (
-              <div className="mt-4 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
-                <h4 className="text-lg font-semibold mb-2">
-                  Submitted Data
-                </h4>
-                <pre className="whitespace-pre-wrap">
-                  {submittedData}
-                </pre>
-              </div>
+          <div className="mt-4 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
+            <h4 className="text-lg font-semibold mb-2">
+              Submitted Data
+            </h4>
+            <pre className="whitespace-pre-wrap">
+              {submittedData}
+            </pre>
+          </div>
         )}
         
 

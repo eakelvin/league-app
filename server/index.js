@@ -9,12 +9,13 @@ const statsRoute = require('./src/routes/statsRoute')
 const connectDatabase = require('./src/config/database')
 connectDatabase()
 
-server.use(cors({
-    origin: [
-        'http://localhost:5173'
-    ],
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
-}))
+// server.use(cors({
+//     origin: [
+//         'http://localhost:5173'
+//     ],
+//     methods: ['GET', 'POST', 'PUT', 'DELETE']
+// }))
+server.use(cors())
 server.use(express.json())
 server.use('/stats', statsRoute)
 server.use('/league', leagueRoute)
