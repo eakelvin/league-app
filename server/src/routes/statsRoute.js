@@ -3,12 +3,14 @@ const router = express.Router();
 const Stat = require('../models/stats');
 
 router.post('/', async (req, res) => {
+    console.log('Request Body:', req.body);
     try {
         const newStatData = req.body;
         const newStat = new Stat(newStatData);
         const savedStat = await newStat.save();
         res.status(201).json(savedStat);
     } catch (error) {
+        console.error('Error:', error);
         res.status(400).json({ message: error.message });
     }
 });

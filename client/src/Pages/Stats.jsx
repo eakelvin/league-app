@@ -1,12 +1,42 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+import { AiOutlinePlus } from "react-icons/ai";
+import ModalStat from '../Components/ModalStat';
 
 const Stats = () => {
+  const [stats, setStats] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/stats')
+      .then(response => {
+        setStats(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching stats:', error);
+      });
+  }, []);
+
   return (
     <div className='p-5'>
       <div>
         <h1 className='font-bold text-5xl'>Statistics</h1>
-        <h1 className='mt-3 font-bold text-3xl'>(league name)Top Stats</h1>
+        <div className='flex justify-between'>
+          <h1 className='mt-3 font-bold text-3xl'>(league name)Top Stats</h1>
+          <ModalStat />
+        </div>
+
+        {/* <div>
+        <h2>Stats:</h2>
+        <ul>
+          {stats.map(stat => (
+            <li key={stat._id}>
+              {stat.name}: {stat.value}
+            </li>
+          ))}
+        </ul>
+        </div> */}
+
       </div>
 
     <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
