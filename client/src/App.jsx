@@ -13,10 +13,7 @@ import NewLeague from './Pages/NewLeague'
 import Results from './Pages/Results'
 import Scores from './Pages/Scores'
 import Stats from './Pages/Stats'
-import Goal from './Pages/Goal'
-import Assists from './Pages/Assists'
 
-// axios.defaults.baseURL = 'http://localhost:3000'
 
 function App() {
 
@@ -31,8 +28,8 @@ function App() {
           <Route path='/results' element={<Results />} />
           <Route path='/scores' element={<Scores />} />
           <Route path='/stats' element={<Stats />} />
-          <Route path='/goals' element={<Goal />} />
-          <Route path='/assists' element={<Assists />} />
+          {/* <Route path='/goals' element={<Goal />} />
+          <Route path='/assists' element={<Assists />} /> */}
           <Route path='*' element={<ErrorPage />} />
         </Routes>
       </Router>

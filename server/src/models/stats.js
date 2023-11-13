@@ -12,11 +12,11 @@ const statSchema = new Schema({
     },
     goal: {
         type: Number,
-        required: true
+        // required: true
     },
     assist: {
         type: Number,
-        required: true
+        // required: true
     }
 });
 
