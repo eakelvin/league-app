@@ -2,16 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 const TeamTable = () => {
-    const numbers = []
     const [stats, setStats] = useState([]);
-
-    for (let i = 0; i <= 10; i++) {
-        numbers.push(
-            <tr key={i}>
-                <td>{i}</td>
-            </tr>
-        )
-    }
 
   useEffect(() => {
     axios.get('http://localhost:3000/stats')
@@ -42,9 +33,7 @@ const TeamTable = () => {
         <tbody>
             {stats.map((item) => (
                 <tr key={item._id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td className="w-4 p-4">{}</td>
-                <td className="px-6 py-4">{item.team}</td>
-                {/* <td className="px-6 py-4">{item.assist}</td> */}
+                  {/* <td className="px-6 py-4">{item.team}</td> */}
                 </tr>
             ))}
         </tbody>
