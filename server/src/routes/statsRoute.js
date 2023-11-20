@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Stat = require('../models/stats');
 
-router.post('/', async (req, res) => {
+router.post('/update-stats', async (req, res) => {
     console.log('Request Body:', req.body);
     try {
         const newStatData = req.body;
@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.get('/', async (req, res) => {
+router.get('/get-stats', async (req, res) => {
     try {
         const stats = await Stat.find();
         res.json(stats);
@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/update-stats/:id', async (req, res) => {
     try {
         const statData = req.body;
         const updatedStat = await Stat.findByIdAndUpdate(req.params.id, statData, { new: true });
@@ -37,7 +37,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-router.delete('/:id', async(req, res) => {
+router.delete('/delete-stats/:id', async(req, res) => {
     try {
         const deleteStat = await Stat.findByIdAndDelete(req.params.id)
         if(!deleteStat) {

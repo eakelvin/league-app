@@ -1,20 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import EditStat from './EditStat';
 
 const GoalTable = () => {
-    const numbers = []
     const [stats, setStats] = useState([]);
-
-    for (let i = 0; i <= 10; i++) {
-        numbers.push(
-            <tr key={i}>
-                <td>{i}</td>
-            </tr>
-        )
-    }
+    const [editingStat, setEditingStat] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/stats')
+    axios.get('http://localhost:3000/stats/get-stats')
       .then(response => {
         setStats(response.data);
       })
@@ -43,13 +36,19 @@ const GoalTable = () => {
           </tr>
         </thead>
         <tbody>
-        {stats.map((item) => (
+        {stats.map((item, index) => (
             item.goal > 0 && (
             <tr key={item._id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-              <td className="w-4 p-4">{}</td>
+              <td className="w-4 p-4">{index + 1}</td>
               <td className="px-6 py-4">{item.name}</td>
               <td className="px-6 py-4">{item.team}</td>
               <td className="px-6 py-4">{item.goal}</td>
+              {/* <button 
+                onClick={() => handleEditClick(item)} 
+                className='bg-blue-500 text-white p-3'>
+                  Edit
+              </button> */}
+              <EditStat />
             </tr>
         )))}
           
